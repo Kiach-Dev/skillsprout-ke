@@ -1,0 +1,14 @@
+/* === Animated Buildings Background === */
+.animated-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('animated-buildings.gif') repeat-x;
+  animation: moveBg 30s linear infinite;
+  z-index: -1; /* keeps it behind all content */
+}
+
+@keyframes moveBg {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 0; }
+}

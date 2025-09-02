@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SkillSprout KE — Free learning paths</title>
+  <meta name="description" content="Discover free and low-cost learning paths. Jenga ujuzi, hatua kwa hatua." />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="background.css">
+  <meta name="theme-color" content="#155e75" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🌱</span>
+      <div>
+        <h1>SkillSprout KE</h1>
+        <p class="tagline">Jenga ujuzi, hatua kwa hatua.</p>
+      </div>
+    </div>
+
+
+    <div class="toggles">
+      <label class="switch">
+        <input id="lowDataToggle" type="checkbox" />
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label">Low data</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Find your next skill</h2>
+      <p>Search, filter, and start a learning path today — free or affordable.</p>
+
+      <div class="controls">
+        <input id="searchInput" type="search" placeholder="Search courses, e.g., 'Python', 'marketing', 'welding'…" />
+        <div class="filters">
+          <select id="categoryFilter" aria-label="Filter by category">
+            <option value="all">All categories</option>
+            <option value="Tech">Tech</option>
+            <option value="Business">Business</option>
+            <option value="Creative">Creative</option>
+            <option value="Trades">Trades</option>
+            <option value="Academic">Academic</option>
+          </select>
+
+          <select id="levelFilter" aria-label="Filter by level">
+            <option value="all">All levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+
+          <select id="formatFilter" aria-label="Filter by format">
+            <option value="all">All formats</option>
+            <option value="Course">Course</option>
+            <option value="Bootcamp">Bootcamp</option>
+            <option value="Playlist">Playlist</option>
+            <option value="Book">Book</option>
+            <option value="Challenge">Challenge</option>
+          </select>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+    <section class="tracks" aria-label="Career tracks">
+      <h3>Career tracks</h3>
+      <div class="track-list">
+        <button class="track" data-tags="python,web,git,html,css,js">🧑🏽‍💻 Tech starter</button>
+        <button class="track" data-tags="marketing,excel,business,finance">📈 Business basics</button>
+        <button class="track" data-tags="design,canva,editing,music">🎨 Creative toolkit</button>
+        <button class="track" data-tags="welding,plumbing,electrical">🛠️ Trades & TVET</button>
+        <button class="track" data-tags="math,writing,study skills">📚 Academic skills</button>
+      </div>
+    </section>
+
+    <section class="results" aria-live="polite">
+      <div id="resultCount" class="result-count">Loading resources…</div>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="about">
+      <h4>About</h4>
+      <p>SkillSprout KE curates free and affordable learning resources so you can grow your skills with low data and clear paths.</p>
+    </div>
+    <div class="actions">
+      <h4>Contribute</h4>
+      <p>Know a great resource? Share it:</p>
+      <a class="btn" href="mailto:kiariechen@gmail.com?subject=New%20Resource%20Suggestion">Email a resource</a>
+<a class="btn outline" href="https://wa.me/254114219905?text=Habari%2C%20ningependa%20kushare%20resource%20ya%20SkillSprout%20KE" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+    <div class="meta">
+      <p>Made in Kenya. 🌍</p>
+      <p><a href="#" id="installBtn" class="link">Install app</a> • <a href="#" id="refreshBtn" class="link">Refresh content</a></p>
+      <a class="link" href="#" onclick="logout(); return false;">Logout</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
+  <script>
+  function logout() {
+    localStorage.removeItem('ss_logged_in');
+    window.location.href = 'index.html'; // the login page
+  }
+</script>
+</body>
+</html>

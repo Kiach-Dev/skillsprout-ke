@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login — SkillSprout KE</title>
+  <meta name="description" content="Login to SkillSprout KE" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#155e75" />
+  <style>
+    /* Minimal login styles (kept here for quick isolation).
+       You can move these into styles.css later. */
+    body.login-page {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #0b1320;
+      overflow: hidden;
+    }
+    .login-bg {
+      position: fixed;
+      inset: 0;
+      background: url('animated-buildings.gif') repeat-x bottom center;
+      opacity: 0.2;
+      animation: moveBg 40s linear infinite;
+      z-index: -1;
+    }
+    @keyframes moveBg {
+      from { background-position: 0 100%; }
+      to { background-position: -1200px 100%; }
+    }
+    .login-card {
+      width: min(90vw, 380px);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #223;
+      border-radius: 14px;
+      padding: 1.25rem;
+      color: #e5e7eb;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    .login-card .brand {
+      display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem;
+    }
+    .login-card h1 { font-size: 1.2rem; margin: 0; }
+    .login-card p { margin: 0.25rem 0 1rem; color: #9ca3af; }
+    .login-card input {
+      width: 100%; padding: 0.7rem 0.8rem; border-radius: 10px;
+      border: 1px solid #243142; background: #0b1220; color: #e5e7eb;
+      margin-bottom: 0.6rem;
+    }
+    .login-card button {
+      width: 100%; padding: 0.7rem 0.8rem; border-radius: 10px;
+      border: none; background: #155e75; color: white; cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-card button:hover { filter: brightness(1.08); }
+    .login-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 0.6rem; font-size: 0.9rem; color: #9ca3af; }
+    .login-meta a { color: #22d3ee; text-decoration: none; }
+    .login-meta a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body class="login-page">
+  <div class="login-bg" aria-hidden="true"></div>
+
+  <div class="login-card" role="dialog" aria-labelledby="loginTitle">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🌱</span>
+      <div>
+        <h1 id="loginTitle">SkillSprout KE</h1>
+        <p>Jenga ujuzi, hatua kwa hatua.</p>
+      </div>
+    </div>
+
+    <form action="app.html" method="get" onsubmit="localStorage.setItem('ss_logged_in','1')">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <div class="login-meta">
+        <span>No account? <a href="#" onclick="alert('Signup coming soon — use Login for now 😊'); return false;">Sign up</a></span>
+        <a href="#" onclick="alert('Password reset coming soon'); return false;">Forgot?</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // If already "logged in", skip login
+    if (localStorage.getItem('ss_logged_in') === '1') {
+      window.location.href = 'app.html';
+    }
+  </script>
+</body>
+</html>
